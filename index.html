@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+      @font-face {
+        font-family: "albb";
+        font-weight: 400;
+        src: url("http://at.alicdn.com/wf/webfont/UtqyOOTInYwh/j66d3Uavi7Io.woff2")
+            format("woff2"),
+          url("http://at.alicdn.com/wf/webfont/UtqyOOTInYwh/ElZddLrzcmO1.woff")
+            format("woff");
+        font-display: swap;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: albb;
+        border: none!important;
+      }
+      html,
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /* background: url('https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4a8a979202e043c480960b25d385e7a5~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=798&h=998&s=33164&e=webp&b=9a010b') no-repeat center; */
+        /* background: url('https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6bdca2510534ecab6101a930f4f4d7c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=437&h=800&s=426980&e=webp&f=125&b=c81212') no-repeat center; */
+        background-size: cover;
+        font-family: albb;
+        background: linear-gradient(45deg, rgb(77, 3, 3), rgb(157, 1, 1));
+      }
+
+      .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f515124157f748968b3dcc84a38ad067~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=364&h=575&s=1117790&e=webp&f=100&b=e6e2bd")
+          no-repeat;
+        background-size: 100%;
+      }
+      .perspective-box {
+        perspective: 1000px;
+        perspective-origin: center center;
+        transform-style: preserve-3d;
+        /* border: 4px solid green; */
+        /* background: url("https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4a8a979202e043c480960b25d385e7a5~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=798&h=998&s=33164&e=webp&b=9a010b") */
+          /* no-repeat center; */
+          /* background: url('./bg22.jpg') no-repeat; */
+          background: linear-gradient(45deg, rgb(77, 3, 3), rgb(157, 1, 1));
+        background-size: cover;
+         border: 1px dashed yellow!important;
+        /* 
+          position: absolute;
+          left: 0;
+          top:0;
+          border: 1px solid red; 
+        */
+        width: 1000px;
+        height: 600px;
+        overflow: hidden;
+      }
+
+      .perspective-content {
+        /* perspective: 1000px; */
+        transform-style: preserve-3d;
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* border: 1px solid red; */
+        width: 100%;
+        height: 100%;
+        /* animation: upup 5s linear infinite; */
+      }
+
+      .pc2 {
+        transform: translateZ(-3000px) rotate(0deg);
+      }
+
+      .sence-box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* margin-left: -100vw; */
+        /* border: 1px solid green; */
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
+
+      .sence-in {
+        transform-style: preserve-3d;
+        border: 1px solid #fff;
+        height: 500px;
+      }
+
+      .sence-in .text-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 100px;
+        /* border: 1px solid red; */
+        width: 200px;
+        height: 400px;
+        background: url("https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/31b3bc1063274e28ba90adf7cb7edce8~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=386&h=901&s=7074&e=webp&a=1&b=db2721")
+          no-repeat;
+        background-size: 100% 100%;
+        padding: 0 60px;
+        font-size: 50px;
+        color: #dbbb78;
+      }
+
+      .sence-in .text-right {
+        left: auto;
+        right: 0;
+      }
+
+      .pc1 {
+        animation: pc1 20s linear infinite;
+      }
+      .pc2 {
+        animation: pc2 20s linear infinite;
+      }
+
+      .pc2 .sence-box img {
+        /* border-color: red; */
+      }
+      .sence-block {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 200px;
+        left: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px;
+        background: url("https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b265e7d23f34e769ec9a5f952fee069~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1176&h=1176&s=49626&e=webp&a=1&b=d5502f")
+          no-repeat;
+        background-size: cover;
+        font-size: 30px;
+        color: #c4af47;
+      }
+
+      .long {
+        position: absolute;
+        left: -400px;
+        bottom: 0;
+        border: 1px solid #fff;
+        width: 400px;
+        height: 300px;
+        background: url('https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9705e283dc414d6484cf1c467a859ed4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1200&h=570&s=115094&e=png&a=1&b=d90e00') no-repeat right bottom;
+        background-size: contain;
+        /* transform:translateZ(300px); */
+      }
+
+      .long-right{
+        left: auto;
+        right: -400px;
+        transform: rotateY(180deg);
+      }
+
+      .long2 {
+        position: absolute;
+        left: 200px;
+        bottom: 0;
+        width: 150px;
+        height: 150px;
+        border: 1px solid yellow;
+        background: url('https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/06b7e8f187a34109a134aa24b66f1d78~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=954&h=647&s=792959&e=png&a=1&b=e04736')no-repeat center;
+        background-size: contain;
+        transform: translateZ(600px);
+      }
+
+      .long2-right {
+        left: auto;
+        right: 200px;
+      }
+
+      .xiangyun{
+        position: absolute;
+        left: -400px;
+        bottom: 0;
+        width: 1600px;
+        height: 600px;
+        background: url('https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aa5a2687d1244108afefd86b4ef5729a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1157&h=369&s=62644&e=png&a=1&b=d60101') no-repeat center;
+        background-size: contain;
+        border: 1px solid yellow;
+        transform: translateZ(-200px);
+      }
+
+      .hua {
+        position: absolute;
+        left: 120px;
+        top: 130px;
+        height: 50px;
+        border: 1px solid #fff;
+        width: 50px;
+        background: url('./hua.png') no-repeat center;
+        background-size: contain;
+        /* animation: rot 5s infinite linear; */
+      }
+
+      .sence-box1 {
+        transform: translateZ(-500px);
+      }
+
+      .sence-box2 {
+        transform: translateZ(-1500px);
+      }
+
+      .sence-box3 {
+        transform: translateZ(-2500px);
+      }
+      .sence-box4 {
+        transform: translateZ(-3500px);
+      }
+      .sence-box5 {
+        transform: translateZ(-4500px);
+      }
+
+      .denglong-box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 300px;
+        background: url("https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4b556643a2e48289af3dad79ad29033~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=802&h=1373&s=57508&e=webp&a=1&b=d6502f")
+            no-repeat 50px,
+          url("https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2a79cfefa0d43d8b550f3675753b94c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=809&h=1528&s=43006&e=webp&a=1&b=d14a30")
+            no-repeat 150px,
+          url("https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4b556643a2e48289af3dad79ad29033~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=802&h=1373&s=57508&e=webp&a=1&b=d6502f")
+            no-repeat 800px,
+          url("https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2a79cfefa0d43d8b550f3675753b94c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=809&h=1528&s=43006&e=webp&a=1&b=d14a30")
+            no-repeat 720px;
+        background-size: 120px, 100px;
+        transform: translateZ(400px);
+      }
+
+      @keyframes pc1 {
+        0% {
+          transform: translateZ(0px);
+          z-index: 99;
+        }
+
+        50% {
+          transform: translateZ(6000px);
+          z-index: 99;
+        }
+        50.1% {
+          transform: translateZ(-6000px);
+          /* opacity: 0.5; */
+          z-index: 1;
+        }
+        60% {
+          /* opacity: 1; */
+        }
+        100% {
+          transform: translateZ(0px);
+          z-index: 1;
+        }
+      }
+      @keyframes pc2 {
+        0% {
+          transform: translateZ(-6000px);
+          z-index: 1;
+          /* opacity: 0.5; */
+        }
+        10% {
+          /* opacity: 1; */
+        }
+        50% {
+          z-index: 1;
+        }
+        50.1% {
+          z-index: 99;
+        }
+        100% {
+          transform: translateZ(6000px);
+          z-index: 99;
+        }
+      }
+
+      @keyframes rot {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+  </style>
+</head>
+<body>
+  <div class="perspective-box">
+    <div class="cover"></div>
+    <div class="perspective-content pc1">
+      <div class="sence-box sence-box1">
+        <div class="sence-in">
+          <div class="text-left text-box">掘金多多</div>
+          <div class="text-right text-box">大展鸿图</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box2">
+        <div class="sence-in">
+          <div class="text-left text-box">步步高升</div>
+          <div class="text-right text-box">年年有鱼</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box3">
+        <div class="sence-in">
+          <div class="text-left text-box">心想事成</div>
+          <div class="text-right text-box">万事如意</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box4">
+        <div class="sence-in">
+          <div class="text-left text-box">蒸蒸日上</div>
+          <div class="text-right text-box">一帆风顺</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box5">
+        <div class="sence-in">
+          <div class="text-left text-box">自强不息</div>
+          <div class="text-right text-box">恭喜发财</div>
+          <div class="sence-block">龙年大吉</div>
+          <div class="denglong-box"></div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="perspective-content pc2">
+      <div class="sence-box sence-box1">
+        <div class="sence-in">
+          <div class="text-left text-box">掘金多多</div>
+          <div class="text-right text-box">大展鸿图</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box2">
+        <div class="sence-in">
+          <div class="text-left text-box">步步高升</div>
+          <div class="text-right text-box">年年有鱼</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box3">
+        <div class="sence-in">
+          <div class="text-left text-box">心想事成</div>
+          <div class="text-right text-box">万事如意</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box4">
+        <div class="sence-in">
+          <div class="text-left text-box">蒸蒸日上</div>
+          <div class="text-right text-box">一帆风顺</div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="denglong-box"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+      <div class="sence-box sence-box5">
+        <div class="sence-in">
+          <div class="text-left text-box">自强不息</div>
+          <div class="text-right text-box">恭喜发财</div>
+          <div class="sence-block">龙年大吉</div>
+          <div class="denglong-box"></div>
+          <div class="long long-left"></div>
+          <div class="long long-right"></div>
+          <div class="long2 long2-left"></div>
+          <div class="long2 long2-right"></div>
+          <div class="xiangyun"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
